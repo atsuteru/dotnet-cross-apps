@@ -1,6 +1,9 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace MyApp
 {
@@ -15,6 +18,10 @@ namespace MyApp
 
         protected override void OnStart()
         {
+            AppCenter.Start("android=1d0f83ff-e5b6-4d9b-adc6-27b75d34199a;" +
+                  "uwp={Your UWP App secret here};" +
+                  "ios={Your iOS App secret here}",
+                  typeof(Analytics), typeof(Crashes));
         }
 
         protected override void OnSleep()
