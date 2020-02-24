@@ -1,7 +1,12 @@
-﻿using ReactiveUI;
+﻿using MyApp.Model.BusinessCard;
+using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using System;
+using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Unity;
 
 namespace MyApp.ViewModel
 {
@@ -23,7 +28,15 @@ namespace MyApp.ViewModel
 
         private async Task ProcessSubmit()
         {
-            await Task.Delay(1500);
+            var pdfData = await ModelContainer.Services.Resolve<IBusinessCardService>()
+                .GeneratePDF(new GenerateParameter()
+                {
+                    Name = Name,
+                    Organization = Organization
+                });
+            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Path.GetTempFileName());
+            File.WriteAllBytes(filePath, pdfData);
+            Debug.WriteLine(filePath);
         }
     }
 }

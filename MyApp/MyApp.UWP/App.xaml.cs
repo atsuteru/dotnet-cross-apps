@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.ApplicationModel;
-using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using Microsoft.AppCenter;
+﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using MyApp.Model.BusinessCard;
+using MyApp.Model.BusinessCard.Service;
+using MyApp.ViewModel;
+using System;
+using Unity;
+using Unity.Lifetime;
+using Windows.ApplicationModel;
+using Windows.ApplicationModel.Activation;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace MyApp.UWP
 {
@@ -33,6 +28,8 @@ namespace MyApp.UWP
         {
             AppCenter.Start("637a08f5-60ae-462d-b4b5-723f30ab41ad",
                    typeof(Analytics), typeof(Crashes));
+
+            ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
 
             this.InitializeComponent();
             this.Suspending += OnSuspending;
