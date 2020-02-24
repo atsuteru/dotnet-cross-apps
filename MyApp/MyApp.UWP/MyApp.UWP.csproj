@@ -28,6 +28,7 @@
     <AppInstallerUri>C:\Users\kami_teru\source\repos\MyXamarinApp\MyApp\MyApp.UWP\AppPackages\Installer</AppInstallerUri>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <PackageCertificateKeyFile />
+	<AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
