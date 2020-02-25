@@ -28,15 +28,24 @@ namespace MyApp.ViewModel
 
         private async Task ProcessSubmit()
         {
-            var pdfData = await ModelContainer.Services.Resolve<IBusinessCardService>()
-                .GeneratePDF(new GenerateParameter()
+            await ModelContainer.Services.Resolve<IBusinessCardService>()
+            .GeneratePDF(new GenerateParameter()
+            {
+                Name = Name,
+                Organization = Organization
+            })
+            .ContinueWith((t) =>
+            {
+                if (t.IsFaulted)
                 {
-                    Name = Name,
-                    Organization = Organization
-                });
-            string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Path.GetTempFileName());
-            File.WriteAllBytes(filePath, pdfData);
-            Debug.WriteLine(filePath);
+                    Debug.WriteLine(t.Exception.ToString());
+                    return;
+                }
+                var pdfData = t.Result;
+                var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Path.GetTempFileName());
+                File.WriteAllBytes(filePath, pdfData);
+                Debug.WriteLine(filePath);
+            });
         }
     }
 }
