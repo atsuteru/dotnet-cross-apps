@@ -19,6 +19,9 @@ namespace MyApp.ViewModel
         [Reactive]
         public string Organization { get; set; }
 
+        [Reactive]
+        public string Result { get; set; }
+
         public ICommand SubmitCommand { private set; get; }
 
         public MainViewModel()
@@ -28,6 +31,7 @@ namespace MyApp.ViewModel
 
         private async Task ProcessSubmit()
         {
+            string result = null;
             await ModelContainer.Services.Resolve<IBusinessCardService>()
             .GeneratePDF(new GenerateParameter()
             {
@@ -39,13 +43,17 @@ namespace MyApp.ViewModel
                 if (t.IsFaulted)
                 {
                     Debug.WriteLine(t.Exception.ToString());
+                    result = t.Exception.Message;
                     return;
                 }
                 var pdfData = t.Result;
                 var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Path.GetTempFileName());
                 File.WriteAllBytes(filePath, pdfData);
                 Debug.WriteLine(filePath);
+                result = filePath;
             });
+
+            Result = result;
         }
     }
 }

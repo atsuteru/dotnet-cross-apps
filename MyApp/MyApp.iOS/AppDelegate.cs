@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿
 using Foundation;
-using UIKit;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using MyApp.ViewModel;
+using UIKit;
+using Unity;
 
 namespace MyApp.iOS
 {
@@ -27,6 +26,8 @@ namespace MyApp.iOS
         {
             AppCenter.Start("6a5d686c-c59e-4df5-aca8-dd51b8700299",
                    typeof(Analytics), typeof(Crashes));
+
+            ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
 
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());

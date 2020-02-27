@@ -128,6 +128,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="ServicesContainerExtension.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -191,6 +192,18 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\..\MyApp.Model.BusinessCard.Service\MyApp.Model.BusinessCard.Service.csproj">
+      <Project>{2C7D5BE5-2723-4EB3-92BC-E05AAB72506A}</Project>
+      <Name>MyApp.Model.BusinessCard.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MyApp.Model.BusinessCard\MyApp.Model.BusinessCard.csproj">
+      <Project>{BD0E82BD-4129-4AA7-B891-114FED491420}</Project>
+      <Name>MyApp.Model.BusinessCard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MyApp.ViewModel\MyApp.ViewModel.csproj">
+      <Project>{3AAC5EFA-5C31-446E-A515-E1E1EC5DD2F3}</Project>
+      <Name>MyApp.ViewModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyApp\MyApp.csproj">
       <Project>{94C23B2E-F87D-4299-A843-D5027F3D185D}</Project>
       <Name>MyApp</Name>

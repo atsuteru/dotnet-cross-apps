@@ -1,11 +1,10 @@
-﻿using System;
-
+﻿
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using Android.Runtime;
+using MyApp.ViewModel;
+using Unity;
 
 namespace MyApp.Droid
 {
@@ -14,6 +13,8 @@ namespace MyApp.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
+
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 

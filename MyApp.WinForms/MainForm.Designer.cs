@@ -20,11 +20,11 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Windows フォーム デザイナーで生成されたコード
 
         /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// デザイナー サポートに必要なメソッドです。このメソッドの内容を
+        /// コード エディターで変更しないでください。
         /// </summary>
         private void InitializeComponent()
         {
@@ -36,8 +36,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.GenerateButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.ResultTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -47,7 +51,7 @@
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(10);
-            this.label1.Size = new System.Drawing.Size(803, 68);
+            this.label1.Size = new System.Drawing.Size(827, 68);
             this.label1.TabIndex = 0;
             this.label1.Text = "Hello WinForms(.Net Core)!!";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -61,7 +65,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 68);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 295);
+            this.panel1.Size = new System.Drawing.Size(827, 184);
             this.panel1.TabIndex = 1;
             // 
             // OrganizationTextBox
@@ -71,7 +75,7 @@
             this.OrganizationTextBox.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.OrganizationTextBox.Location = new System.Drawing.Point(205, 105);
             this.OrganizationTextBox.Name = "OrganizationTextBox";
-            this.OrganizationTextBox.Size = new System.Drawing.Size(478, 39);
+            this.OrganizationTextBox.Size = new System.Drawing.Size(502, 39);
             this.OrganizationTextBox.TabIndex = 3;
             // 
             // NameTextBox
@@ -81,7 +85,7 @@
             this.NameTextBox.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.NameTextBox.Location = new System.Drawing.Point(205, 29);
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(478, 39);
+            this.NameTextBox.Size = new System.Drawing.Size(502, 39);
             this.NameTextBox.TabIndex = 2;
             // 
             // label3
@@ -111,7 +115,7 @@
             this.GenerateButton.Location = new System.Drawing.Point(120, 10);
             this.GenerateButton.Margin = new System.Windows.Forms.Padding(10);
             this.GenerateButton.Name = "GenerateButton";
-            this.GenerateButton.Size = new System.Drawing.Size(563, 59);
+            this.GenerateButton.Size = new System.Drawing.Size(587, 59);
             this.GenerateButton.TabIndex = 2;
             this.GenerateButton.Text = "ビジネスカードを作成します";
             this.GenerateButton.UseVisualStyleBackColor = true;
@@ -120,17 +124,48 @@
             // 
             this.panel2.Controls.Add(this.GenerateButton);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 363);
+            this.panel2.Location = new System.Drawing.Point(0, 252);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(120, 10, 120, 10);
-            this.panel2.Size = new System.Drawing.Size(803, 79);
+            this.panel2.Size = new System.Drawing.Size(827, 79);
             this.panel2.TabIndex = 3;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.ResultTextBox);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 331);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(827, 100);
+            this.panel3.TabIndex = 4;
+            // 
+            // ResultTextBox
+            // 
+            this.ResultTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResultTextBox.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ResultTextBox.Location = new System.Drawing.Point(205, 31);
+            this.ResultTextBox.Name = "ResultTextBox";
+            this.ResultTextBox.Size = new System.Drawing.Size(502, 39);
+            this.ResultTextBox.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label4.Location = new System.Drawing.Point(120, 34);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 33);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "結果";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(803, 460);
+            this.ClientSize = new System.Drawing.Size(827, 460);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
@@ -139,6 +174,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -153,6 +190,9 @@
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox ResultTextBox;
+        private System.Windows.Forms.Label label4;
     }
 }
 
