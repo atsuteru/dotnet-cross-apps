@@ -1,4 +1,6 @@
 ﻿using MyApp.ViewModel;
+using ReactiveUI;
+using Splat;
 using System.Windows;
 using Unity;
 
@@ -11,6 +13,8 @@ namespace MyApp.WPF.NetFramework
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainWindow).Assembly);
+
             ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
 
             base.OnStartup(e);
