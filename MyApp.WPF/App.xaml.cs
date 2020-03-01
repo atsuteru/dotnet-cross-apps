@@ -2,6 +2,8 @@
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using MyApp.ViewModel;
+using ReactiveUI;
+using Splat;
 using System.Windows;
 using Unity;
 
@@ -16,6 +18,8 @@ namespace MyApp.WPF
         {
             AppCenter.Start("056cd67f-fb47-4a01-936f-4df5b63a0dcf",
                    typeof(Analytics), typeof(Crashes));
+
+            Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainWindow).Assembly);
 
             ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
 
