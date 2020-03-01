@@ -1,6 +1,10 @@
 ﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using MyApp.ViewModel;
+using ReactiveUI;
+using ReactiveUI.XamForms;
+using Splat;
 using Xamarin.Forms;
 
 namespace MyApp
@@ -11,7 +15,11 @@ namespace MyApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            Locator.CurrentMutable.RegisterViewsForViewModels(GetType().Assembly);
+
+            var screen = new MainViewModel();
+            Locator.CurrentMutable.RegisterConstant(screen, typeof(IScreen));
+            MainPage = new RoutedViewHost() { Router = screen.Router };
         }
 
         protected override void OnStart()

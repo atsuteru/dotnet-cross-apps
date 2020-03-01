@@ -32,4 +32,13 @@
   <ItemGroup>
     <ProjectReference Include="..\..\MyApp.ViewModel\MyApp.ViewModel.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ResultView.xaml.cs">
+      <DependentUpon>ResultView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

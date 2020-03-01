@@ -1,4 +1,5 @@
 ﻿using ReactiveUI;
+using System;
 
 namespace MyApp.ViewModel
 {
@@ -6,7 +7,7 @@ namespace MyApp.ViewModel
     {
         public MainViewModel()
         {
-            Router.NavigateAndReset.Execute(new HomeViewModel(this));
+            Router.NavigateAndReset.Execute(new HomeViewModel(this)).Subscribe();
         }
     }
 }

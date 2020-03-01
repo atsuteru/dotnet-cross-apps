@@ -57,7 +57,7 @@ namespace MyApp.ViewModel
                 Name = Name,
                 Organization = Organization,
                 Result = result
-            });
+            }).Subscribe();
         }
     }
 }
