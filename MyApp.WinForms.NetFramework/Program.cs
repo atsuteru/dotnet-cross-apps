@@ -1,4 +1,6 @@
 ﻿using MyApp.ViewModel;
+using ReactiveUI;
+using Splat;
 using System;
 using System.Windows.Forms;
 using Unity;
@@ -16,9 +18,11 @@ namespace MyApp.WinForms.NetFramework
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainForm).Assembly);
+
             ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
 
-            Application.Run(new MainForm(new MainViewModel()));
+            Application.Run(new MainForm() { ViewModel = new MainViewModel() });
         }
     }
 }
