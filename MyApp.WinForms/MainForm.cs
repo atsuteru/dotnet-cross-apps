@@ -1,6 +1,5 @@
 ﻿using MyApp.ViewModel;
 using ReactiveUI;
-using System.Reactive.Disposables;
 using System.Windows.Forms;
 
 namespace MyApp.WinForms
@@ -11,20 +10,11 @@ namespace MyApp.WinForms
 
         object IViewFor.ViewModel { get => ViewModel; set => ViewModel = value as MainViewModel; }
 
-        public MainForm(MainViewModel viewModel)
+        public MainForm()
         {
             InitializeComponent();
-
-            ViewModel = viewModel;
-
-            this.WhenActivated((d) =>
-            {
-                this.Bind(ViewModel, vm => vm.Name, v => v.NameTextBox.Text).DisposeWith(d);
-                this.Bind(ViewModel, vm => vm.Organization, v => v.OrganizationTextBox.Text).DisposeWith(d);
-                this.OneWayBind(ViewModel, vm => vm.Result, v => v.ResultTextBox.Text).DisposeWith(d);
-                this.BindCommand(ViewModel, vm => vm.SubmitCommand, v => v.GenerateButton).DisposeWith(d);
-            });
+            ViewModel = new MainViewModel();
+            RoutedControlHost.Router = ViewModel.Router;
         }
-
     }
 }

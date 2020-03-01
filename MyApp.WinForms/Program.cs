@@ -1,10 +1,12 @@
-using MyApp.ViewModel;
-using System;
-using System.Windows.Forms;
-using Unity;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using MyApp.ViewModel;
+using ReactiveUI;
+using Splat;
+using System;
+using System.Windows.Forms;
+using Unity;
 
 namespace MyApp.WinForms
 {
@@ -23,9 +25,11 @@ namespace MyApp.WinForms
             AppCenter.Start("a7a83300-7c5a-4dfa-8d3b-c29d6aed7f1b",
                    typeof(Analytics), typeof(Crashes));
 
+            Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainForm).Assembly);
+
             ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
 
-            Application.Run(new MainForm(new MainViewModel()));
+            Application.Run(new MainForm() { ViewModel = new MainViewModel() });
         }
     }
 }

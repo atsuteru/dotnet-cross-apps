@@ -17,4 +17,37 @@
     <ProjectReference Include="..\MyApp.ViewModel\MyApp.ViewModel.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="HomeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="HomeView.Designer.cs">
+      <DependentUpon>HomeView.cs</DependentUpon>
+    </Compile>
+    <Compile Update="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Update="ResultView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ResultView.Designer.cs">
+      <DependentUpon>ResultView.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="HomeView.resx">
+      <DependentUpon>HomeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ResultView.resx">
+      <DependentUpon>ResultView.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
