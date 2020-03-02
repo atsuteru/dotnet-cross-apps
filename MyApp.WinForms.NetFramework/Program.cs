@@ -22,7 +22,7 @@ namespace MyApp.WinForms.NetFramework
 
             ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
 
-            Application.Run(new MainForm() { ViewModel = new MainViewModel() });
+            Application.Run(new MainForm());
         }
     }
 }
