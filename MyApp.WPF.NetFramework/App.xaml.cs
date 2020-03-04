@@ -1,4 +1,5 @@
 ﻿using MyApp.ViewModel;
+using MyApp.WPF.NetFramework.ContainerExtension;
 using ReactiveUI;
 using Splat;
 using System.Windows;
@@ -15,6 +16,7 @@ namespace MyApp.WPF.NetFramework
         {
             Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainWindow).Assembly);
 
+            ModelContainer.Dependencies.AddNewExtension<DependenciesContainerExtension>();
             ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
 
             base.OnStartup(e);

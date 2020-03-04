@@ -2,6 +2,7 @@ using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using MyApp.ViewModel;
+using MyApp.WinForms.ContainerExtension;
 using ReactiveUI;
 using Splat;
 using System;
@@ -27,6 +28,7 @@ namespace MyApp.WinForms
 
             Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainForm).Assembly);
 
+            ModelContainer.Dependencies.AddNewExtension<DependenciesContainerExtension>();
             ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
 
             Application.Run(new MainForm());

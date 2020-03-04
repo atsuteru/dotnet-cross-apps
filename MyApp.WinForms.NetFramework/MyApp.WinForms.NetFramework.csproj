@@ -107,6 +107,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dependencies\MessageDialog.cs" />
     <Compile Include="HomeView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -127,7 +128,8 @@
     <Compile Include="ResultView.Designer.cs">
       <DependentUpon>ResultView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ServicesContainerExtension.cs" />
+    <Compile Include="ContainerExtension\DependenciesContainerExtension.cs" />
+    <Compile Include="ContainerExtension\ServicesContainerExtension.cs" />
     <EmbeddedResource Include="HomeView.resx">
       <DependentUpon>HomeView.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +163,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MyApp.Dependencies\MyApp.Dependencies.csproj">
+      <Project>{0c456b44-eb1d-48ae-b785-fc32ea76efe4}</Project>
+      <Name>MyApp.Dependencies</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyApp.Model.BusinessCard.Service\MyApp.Model.BusinessCard.Service.csproj">
       <Project>{2C7D5BE5-2723-4EB3-92BC-E05AAB72506A}</Project>
       <Name>MyApp.Model.BusinessCard.Service</Name>

@@ -4,7 +4,7 @@ using Unity;
 using Unity.Extension;
 using Unity.Lifetime;
 
-namespace MyApp.UWP
+namespace MyApp.iOS.ContainerExtension
 {
     public class ServicesContainerExtension : UnityContainerExtension
     {

@@ -4,7 +4,7 @@ using Unity;
 using Unity.Extension;
 using Unity.Lifetime;
 
-namespace MyApp.WPF
+namespace MyApp.WinForms.NetFramework.ContainerExtension
 {
     public class ServicesContainerExtension : UnityContainerExtension
     {

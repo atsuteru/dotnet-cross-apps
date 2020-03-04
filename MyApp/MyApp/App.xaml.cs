@@ -6,6 +6,8 @@ using ReactiveUI;
 using ReactiveUI.XamForms;
 using Splat;
 using Xamarin.Forms;
+using Unity;
+using Unity.Lifetime;
 
 namespace MyApp
 {

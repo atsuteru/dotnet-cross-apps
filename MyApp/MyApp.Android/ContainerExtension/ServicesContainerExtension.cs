@@ -4,7 +4,7 @@ using Unity;
 using Unity.Extension;
 using Unity.Lifetime;
 
-namespace MyApp.WinForms
+namespace MyApp.Droid.ContainerExtension
 {
     public class ServicesContainerExtension : UnityContainerExtension
     {

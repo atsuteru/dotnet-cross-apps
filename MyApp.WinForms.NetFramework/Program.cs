@@ -1,4 +1,5 @@
 ﻿using MyApp.ViewModel;
+using MyApp.WinForms.NetFramework.ContainerExtension;
 using ReactiveUI;
 using Splat;
 using System;
@@ -20,6 +21,7 @@ namespace MyApp.WinForms.NetFramework
 
             Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainForm).Assembly);
 
+            ModelContainer.Dependencies.AddNewExtension<DependenciesContainerExtension>();
             ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
 
             Application.Run(new MainForm());

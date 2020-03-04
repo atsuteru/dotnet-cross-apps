@@ -17,7 +17,7 @@ namespace MyApp.Model.BusinessCard.Service
 
         public BusinessCardService()
         {
-            URL = "https://business-card-webservice.herokuapp.com/api/businesscard/generate/as/pdf";
+            URL = "https://business-card-webservice.herokuapp.com/api/businesscard/generate/as/pdf2";
             TimeoutSeconds = 10;
             CardTemplate = "templates/business_card.mustache.html";
         }

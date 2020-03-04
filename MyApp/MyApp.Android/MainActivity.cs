@@ -3,6 +3,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using MyApp.Droid.ContainerExtension;
 using MyApp.ViewModel;
 using Unity;
 
@@ -13,6 +14,7 @@ namespace MyApp.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            ModelContainer.Dependencies.AddNewExtension<DependenciesContainerExtension>();
             ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
 
             TabLayoutResource = Resource.Layout.Tabbar;

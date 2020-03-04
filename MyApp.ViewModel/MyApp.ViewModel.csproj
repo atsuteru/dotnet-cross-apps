@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MyApp.Dependencies\MyApp.Dependencies.csproj" />
     <ProjectReference Include="..\MyApp.Model.BusinessCard\MyApp.Model.BusinessCard.csproj" />
   </ItemGroup>
 

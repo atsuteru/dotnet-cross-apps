@@ -1,4 +1,5 @@
-﻿using MyApp.Model.BusinessCard;
+﻿using MyApp.Dependencies;
+using MyApp.Model.BusinessCard;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
@@ -41,7 +42,10 @@ namespace MyApp.ViewModel
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.ToString());
-                result = ex.Message;
+                ModelContainer.Dependencies.Resolve<IMessageDialog>().ShowAlertMessage("Generation error", ex.Message, () =>
+                {
+                    result = ex.Message;
+                });
             }
 
             if (pdfData != null)

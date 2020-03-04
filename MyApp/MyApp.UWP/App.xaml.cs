@@ -3,6 +3,7 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using MyApp.Model.BusinessCard;
 using MyApp.Model.BusinessCard.Service;
+using MyApp.UWP.ContainerExtension;
 using MyApp.ViewModel;
 using System;
 using Unity;
@@ -29,6 +30,7 @@ namespace MyApp.UWP
             AppCenter.Start("637a08f5-60ae-462d-b4b5-723f30ab41ad",
                    typeof(Analytics), typeof(Crashes));
 
+            ModelContainer.Dependencies.AddNewExtension<DependenciesContainerExtension>();
             ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
 
             this.InitializeComponent();
