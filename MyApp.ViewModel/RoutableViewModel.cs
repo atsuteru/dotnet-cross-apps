@@ -2,7 +2,7 @@
 
 namespace MyApp.ViewModel
 {
-    public abstract class RoutableViewModel : ReactiveObject, IScreen
+    public abstract class RoutableViewModel : ActivatableViewModel, IScreen
     {
         public RoutingState Router { get; }
 

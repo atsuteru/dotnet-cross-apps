@@ -29,15 +29,21 @@ namespace MyApp.ViewModel
         private async Task ProcessSubmit()
         {
             string result = null;
-            byte[] pdfData = null;
             try
             {
-                pdfData = await Task.Run(async () => await ModelContainer.Services.Resolve<IBusinessCardService>()
-                    .GeneratePDF(new GenerateParameter()
-                    {
-                        Name = Name,
-                        Organization = Organization
-                    }));
+                result = await Task.Run(async () => 
+                {
+                    var pdfData = await ModelContainer.Services.Resolve<IBusinessCardService>()
+                        .GeneratePDF(new GenerateParameter()
+                        {
+                            Name = Name,
+                            Organization = Organization
+                        });
+                    var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Path.GetTempFileName());
+                    File.WriteAllBytes(filePath, pdfData);
+                    Debug.WriteLine(filePath);
+                    return filePath;
+                });
             }
             catch (Exception ex)
             {
@@ -46,14 +52,6 @@ namespace MyApp.ViewModel
                 {
                     result = ex.Message;
                 });
-            }
-
-            if (pdfData != null)
-            {
-                var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Path.GetTempFileName());
-                File.WriteAllBytes(filePath, pdfData);
-                Debug.WriteLine(filePath);
-                result = filePath;
             }
 
             HostScreen.Router.Navigate.Execute(new ResultViewModel(HostScreen)
