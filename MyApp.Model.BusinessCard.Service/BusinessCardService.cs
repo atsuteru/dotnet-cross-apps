@@ -33,19 +33,17 @@ namespace MyApp.Model.BusinessCard.Service
                 query.Add("name", parameter.Name);
                 query.Add("company", parameter.Organization);
 
-                using (var response = api.GetAsync("?" + query.ToString()).Result)
+                var response = api.GetAsync("?" + query.ToString()).Result;
+                if (!response.IsSuccessStatusCode)
                 {
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        var exception = new ApplicationException("Business card generation error");
-                        exception.Data.Add("StatusCode", response.StatusCode);
-                        exception.Data.Add("ReasonPhrase", response.ReasonPhrase);
-                        exception.Data.Add("Detail", await response.Content.ReadAsStringAsync());
-                        throw exception;
-                    }
-
-                    return await response.Content.ReadAsByteArrayAsync();
+                    var exception = new ApplicationException("Business card generation error");
+                    exception.Data.Add("StatusCode", response.StatusCode);
+                    exception.Data.Add("ReasonPhrase", response.ReasonPhrase);
+                    exception.Data.Add("Detail", await response.Content.ReadAsStringAsync());
+                    throw exception;
                 }
+
+                return await response.Content.ReadAsByteArrayAsync();
             }
         }
     }
