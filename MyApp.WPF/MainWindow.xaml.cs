@@ -14,7 +14,7 @@ namespace MyApp.WPF
         public MainWindow()
         {
             InitializeComponent();
-            ViewModel = DataContext as MainViewModel;
+            ViewModel = new MainViewModel();
             RoutedViewHost.Router = ViewModel.Router;
 
             this.WhenActivated((d) =>
