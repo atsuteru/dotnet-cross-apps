@@ -31,7 +31,7 @@ namespace MyApp.ViewModel
             string result = null;
             try
             {
-                result = await Task.Run(async () => 
+                result = await Task.Run(async () =>
                 {
                     var pdfData = await ModelContainer.Services.Resolve<IBusinessCardService>()
                         .GeneratePDF(new GenerateParameter()

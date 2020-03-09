@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Specialized;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -24,28 +22,31 @@ namespace MyApp.Model.BusinessCard.Service
 
         async Task<byte[]> IBusinessCardService.GeneratePDF(GenerateParameter parameter)
         {
-            var api = new HttpClient()
+            using (var api = new HttpClient()
             {
                 BaseAddress = new Uri(URL),
                 Timeout = new TimeSpan(0, 0, TimeoutSeconds)
-            };
-
-            var query = HttpUtility.ParseQueryString(string.Empty);
-            query.Add("template", CardTemplate);
-            query.Add("name", parameter.Name);
-            query.Add("company", parameter.Organization);
-
-            var response = api.GetAsync("?" + query.ToString()).Result;
-            if (!response.IsSuccessStatusCode)
+            })
             {
-                var exception = new ApplicationException("Business card generation error");
-                exception.Data.Add("StatusCode", response.StatusCode);
-                exception.Data.Add("ReasonPhrase", response.ReasonPhrase);
-                exception.Data.Add("Detail", await response.Content.ReadAsStringAsync());
-                throw exception;
-            }
+                var query = HttpUtility.ParseQueryString(string.Empty);
+                query.Add("template", CardTemplate);
+                query.Add("name", parameter.Name);
+                query.Add("company", parameter.Organization);
 
-            return await response.Content.ReadAsByteArrayAsync();
+                using (var response = api.GetAsync("?" + query.ToString()).Result)
+                {
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        var exception = new ApplicationException("Business card generation error");
+                        exception.Data.Add("StatusCode", response.StatusCode);
+                        exception.Data.Add("ReasonPhrase", response.ReasonPhrase);
+                        exception.Data.Add("Detail", await response.Content.ReadAsStringAsync());
+                        throw exception;
+                    }
+
+                    return await response.Content.ReadAsByteArrayAsync();
+                }
+            }
         }
     }
 }
