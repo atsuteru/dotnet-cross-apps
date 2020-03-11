@@ -2,13 +2,15 @@
 
 namespace MyApp.ViewModel
 {
-    public abstract class RoutableViewModel : ActivatableViewModel, IScreen
+    public abstract class RoutableViewModel : ActivatableViewModel, IRoutableViewModel
     {
-        public RoutingState Router { get; }
+        string IRoutableViewModel.UrlPathSegment => GetType().Name.Replace("ViewModel", string.Empty);
 
-        public RoutableViewModel()
+        public IScreen HostScreen { get; }
+
+        public RoutableViewModel(IScreen hostScreen)
         {
-            Router = new RoutingState();
+            HostScreen = hostScreen;
         }
     }
 }

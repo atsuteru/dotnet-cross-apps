@@ -11,7 +11,7 @@ using Unity;
 
 namespace MyApp.ViewModel
 {
-    public class HomeViewModel: NavigableViewModel
+    public class HomeViewModel: RoutableViewModel
     {
         [Reactive]
         public string Name { get; set; }

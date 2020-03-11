@@ -6,7 +6,7 @@ using System.Reactive.Linq;
 
 namespace MyApp.ViewModel
 {
-    public class MainViewModel: RoutableViewModel
+    public class MainViewModel: ScreenHostableViewModel
     {
         [Reactive]
         public string ApplicationTitle { get; set; }

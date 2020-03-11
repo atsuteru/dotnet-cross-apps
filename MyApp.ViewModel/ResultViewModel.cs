@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace MyApp.ViewModel
 {
-    public class ResultViewModel: NavigableViewModel
+    public class ResultViewModel: RoutableViewModel
     {
         [Reactive]
         public string Name { get; set; }
