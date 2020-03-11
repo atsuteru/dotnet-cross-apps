@@ -26,10 +26,9 @@ namespace MyApp.WinForms
             AppCenter.Start("a7a83300-7c5a-4dfa-8d3b-c29d6aed7f1b",
                    typeof(Analytics), typeof(Crashes));
 
-            Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainForm).Assembly);
-
             ModelContainer.Dependencies.AddNewExtension<DependenciesContainerExtension>();
             ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
+            Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainForm).Assembly);
 
             Application.Run(new MainForm());
         }

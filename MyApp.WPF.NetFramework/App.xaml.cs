@@ -14,10 +14,9 @@ namespace MyApp.WPF.NetFramework
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainWindow).Assembly);
-
             ModelContainer.Dependencies.AddNewExtension<DependenciesContainerExtension>();
             ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
+            Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainWindow).Assembly);
 
             base.OnStartup(e);
         }

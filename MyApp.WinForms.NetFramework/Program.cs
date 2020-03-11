@@ -19,10 +19,9 @@ namespace MyApp.WinForms.NetFramework
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainForm).Assembly);
-
             ModelContainer.Dependencies.AddNewExtension<DependenciesContainerExtension>();
             ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
+            Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainForm).Assembly);
 
             Application.Run(new MainForm());
         }
