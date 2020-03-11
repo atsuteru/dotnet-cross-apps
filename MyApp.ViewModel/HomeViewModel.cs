@@ -1,7 +1,9 @@
 ﻿using MyApp.Dependencies;
+using MyApp.Model;
 using MyApp.Model.BusinessCard;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
+using Splat;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -33,7 +35,7 @@ namespace MyApp.ViewModel
             {
                 result = await Task.Run(async () =>
                 {
-                    var pdfData = await ModelContainer.Services.Resolve<IBusinessCardService>()
+                    var pdfData = await Locator.Current.GetService<ServiceContainer>().Resolve<IBusinessCardService>()
                         .GeneratePDF(new GenerateParameter()
                         {
                             Name = Name,
@@ -48,7 +50,7 @@ namespace MyApp.ViewModel
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.ToString());
-                ModelContainer.Dependencies.Resolve<IMessageDialog>().ShowAlertMessage("Generation error", ex.Message, () =>
+                Locator.Current.GetService<DependencyContainer>().Resolve<IMessageDialog>().ShowAlertMessage("Generation error", ex.Message, () =>
                 {
                     result = ex.Message;
                 });

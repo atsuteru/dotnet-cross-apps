@@ -189,6 +189,10 @@
       <Project>{3aac5efa-5c31-446e-a515-e1e1ec5dd2f3}</Project>
       <Name>MyApp.ViewModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MyApp\MyApp.Model\MyApp.Model.csproj">
+      <Project>{8b6b0973-1358-43d5-ae75-e75d058b70d5}</Project>
+      <Name>MyApp.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,13 +1,12 @@
 ﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-using MyApp.Model.BusinessCard;
-using MyApp.Model.BusinessCard.Service;
+using MyApp.Dependencies;
+using MyApp.Model;
 using MyApp.UWP.ContainerExtension;
-using MyApp.ViewModel;
+using Splat;
 using System;
 using Unity;
-using Unity.Lifetime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
@@ -30,8 +29,8 @@ namespace MyApp.UWP
             AppCenter.Start("637a08f5-60ae-462d-b4b5-723f30ab41ad",
                    typeof(Analytics), typeof(Crashes));
 
-            ModelContainer.Dependencies.AddNewExtension<DependenciesContainerExtension>();
-            ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
+            Locator.CurrentMutable.RegisterConstant((ServiceContainer)new ServiceContainer().AddNewExtension<ServicesContainerExtension>());
+            Locator.CurrentMutable.RegisterConstant((DependencyContainer)new DependencyContainer().AddNewExtension<DependenciesContainerExtension>());
 
             this.InitializeComponent();
             this.Suspending += OnSuspending;

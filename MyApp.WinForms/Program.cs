@@ -1,7 +1,8 @@
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-using MyApp.ViewModel;
+using MyApp.Dependencies;
+using MyApp.Model;
 using MyApp.WinForms.ContainerExtension;
 using ReactiveUI;
 using Splat;
@@ -26,8 +27,8 @@ namespace MyApp.WinForms
             AppCenter.Start("a7a83300-7c5a-4dfa-8d3b-c29d6aed7f1b",
                    typeof(Analytics), typeof(Crashes));
 
-            ModelContainer.Dependencies.AddNewExtension<DependenciesContainerExtension>();
-            ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
+            Locator.CurrentMutable.RegisterConstant((ServiceContainer)new ServiceContainer().AddNewExtension<ServicesContainerExtension>());
+            Locator.CurrentMutable.RegisterConstant((DependencyContainer)new DependencyContainer().AddNewExtension<DependenciesContainerExtension>());
             Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainForm).Assembly);
 
             Application.Run(new MainForm());

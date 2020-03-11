@@ -3,8 +3,10 @@ using Foundation;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using MyApp.Dependencies;
 using MyApp.iOS.ContainerExtension;
-using MyApp.ViewModel;
+using MyApp.Model;
+using Splat;
 using UIKit;
 using Unity;
 
@@ -28,8 +30,8 @@ namespace MyApp.iOS
             AppCenter.Start("6a5d686c-c59e-4df5-aca8-dd51b8700299",
                    typeof(Analytics), typeof(Crashes));
 
-            ModelContainer.Dependencies.AddNewExtension<DependenciesContainerExtension>();
-            ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
+            Locator.CurrentMutable.RegisterConstant((ServiceContainer)new ServiceContainer().AddNewExtension<ServicesContainerExtension>());
+            Locator.CurrentMutable.RegisterConstant((DependencyContainer)new DependencyContainer().AddNewExtension<DependenciesContainerExtension>());
 
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());

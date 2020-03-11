@@ -1,4 +1,5 @@
-﻿using MyApp.ViewModel;
+﻿using MyApp.Dependencies;
+using MyApp.Model;
 using MyApp.WPF.NetFramework.ContainerExtension;
 using ReactiveUI;
 using Splat;
@@ -14,8 +15,8 @@ namespace MyApp.WPF.NetFramework
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            ModelContainer.Dependencies.AddNewExtension<DependenciesContainerExtension>();
-            ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
+            Locator.CurrentMutable.RegisterConstant((ServiceContainer)new ServiceContainer().AddNewExtension<ServicesContainerExtension>());
+            Locator.CurrentMutable.RegisterConstant((DependencyContainer)new DependencyContainer().AddNewExtension<DependenciesContainerExtension>());
             Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainWindow).Assembly);
 
             base.OnStartup(e);

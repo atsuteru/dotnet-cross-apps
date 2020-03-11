@@ -1,4 +1,5 @@
-﻿using MyApp.ViewModel;
+﻿using MyApp.Dependencies;
+using MyApp.Model;
 using MyApp.WinForms.NetFramework.ContainerExtension;
 using ReactiveUI;
 using Splat;
@@ -19,8 +20,8 @@ namespace MyApp.WinForms.NetFramework
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            ModelContainer.Dependencies.AddNewExtension<DependenciesContainerExtension>();
-            ModelContainer.Services.AddNewExtension<ServicesContainerExtension>();
+            Locator.CurrentMutable.RegisterConstant((ServiceContainer)new ServiceContainer().AddNewExtension<ServicesContainerExtension>());
+            Locator.CurrentMutable.RegisterConstant((DependencyContainer)new DependencyContainer().AddNewExtension<DependenciesContainerExtension>());
             Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainForm).Assembly);
 
             Application.Run(new MainForm());

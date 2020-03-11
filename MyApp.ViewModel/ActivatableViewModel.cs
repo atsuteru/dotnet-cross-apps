@@ -1,5 +1,9 @@
-﻿using ReactiveUI;
+﻿using MyApp.Dependencies;
+using MyApp.Model;
+using ReactiveUI;
+using Splat;
 using System.Reactive.Disposables;
+using Unity;
 
 namespace MyApp.ViewModel
 {
