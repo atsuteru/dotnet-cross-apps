@@ -15,7 +15,7 @@
 
   <Properties>
     <DisplayName>MyApp.XamForms.UWP</DisplayName>
-    <PublisherDisplayName>64b1e101-28aa-46a4-b8e5-9f2feae8bb91</PublisherDisplayName>
+    <PublisherDisplayName>@kami_teru</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
