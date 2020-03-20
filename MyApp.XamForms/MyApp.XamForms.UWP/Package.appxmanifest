@@ -9,13 +9,13 @@
   <Identity
     Name="9f91853d-139e-4a85-b309-4844a011432b"
     Publisher="CN=kami_teru"
-    Version="1.0.0.0" />
+    Version="1.0.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>MyApp.XamForms.UWP</DisplayName>
-    <PublisherDisplayName>@kami_teru</PublisherDisplayName>
+    <PublisherDisplayName>64b1e101-28aa-46a4-b8e5-9f2feae8bb91</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
