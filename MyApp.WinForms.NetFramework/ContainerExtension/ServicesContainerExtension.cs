@@ -1,5 +1,4 @@
-﻿using MyApp.Model.BusinessCard;
-using MyApp.Model.BusinessCard.Service;
+﻿using MyApp.Services.BusinessCard;
 using Unity;
 using Unity.Extension;
 using Unity.Lifetime;

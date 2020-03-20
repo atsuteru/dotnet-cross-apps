@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyApp.Dependencies\MyApp.Dependencies.csproj" />
-    <ProjectReference Include="..\MyApp\MyApp.Model\MyApp.Model.csproj" />
+    <ProjectReference Include="..\MyApp.Services\MyApp.Services.csproj" />
   </ItemGroup>
 
 </Project>

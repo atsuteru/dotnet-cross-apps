@@ -1,6 +1,6 @@
 ﻿using MyApp.Dependencies;
-using MyApp.Model;
-using MyApp.Model.BusinessCard;
+using MyApp.Services;
+using MyApp.Services.BusinessCard;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using Splat;

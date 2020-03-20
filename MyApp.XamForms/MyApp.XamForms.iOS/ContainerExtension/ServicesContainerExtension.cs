@@ -3,7 +3,7 @@ using Unity;
 using Unity.Extension;
 using Unity.Lifetime;
 
-namespace MyApp.WPF.NetFramework.ContainerExtension
+namespace MyApp.XamForms.iOS.ContainerExtension
 {
     public class ServicesContainerExtension : UnityContainerExtension
     {

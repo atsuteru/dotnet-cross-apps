@@ -1,5 +1,5 @@
 ﻿using MyApp.Dependencies;
-using MyApp.Model;
+using MyApp.Services;
 using MyApp.WPF.NetFramework.ContainerExtension;
 using ReactiveUI;
 using Splat;

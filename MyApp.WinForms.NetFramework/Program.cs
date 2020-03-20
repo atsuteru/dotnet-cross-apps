@@ -1,5 +1,5 @@
 ﻿using MyApp.Dependencies;
-using MyApp.Model;
+using MyApp.Services;
 using MyApp.WinForms.NetFramework.ContainerExtension;
 using ReactiveUI;
 using Splat;

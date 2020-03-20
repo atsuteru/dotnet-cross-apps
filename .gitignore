@@ -221,6 +221,8 @@ ClientBin/
 *.dbproj.schemaview
 *.jfm
 *.pfx
+*.jks
+*.cer
 *.publishsettings
 orleans.codegen.cs
 
@@ -338,4 +340,3 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
-/MyApp/MyApp.Android/*.jks

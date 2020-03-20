@@ -2,7 +2,7 @@
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using MyApp.Dependencies;
-using MyApp.Model;
+using MyApp.Services;
 using MyApp.WPF.ContainerExtension;
 using ReactiveUI;
 using Splat;

@@ -1,5 +1,5 @@
 ﻿using MyApp.Dependencies;
-using MyApp.Model;
+using MyApp.Services;
 using ReactiveUI;
 using Splat;
 using System.Reactive.Disposables;
