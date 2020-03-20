@@ -18,18 +18,6 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-    <GenerateAppInstallerFile>True</GenerateAppInstallerFile>
-    <PackageCertificateThumbprint>99CE2373D41F4B9E6CF903682EFC04494FC1382D</PackageCertificateThumbprint>
-    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
-    <GenerateTestArtifacts>True</GenerateTestArtifacts>
-    <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
-    <AppInstallerUri>https://appcenter.ms/users/kami_teru/apps/MyApp.UWP/distribute/releases</AppInstallerUri>
-    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\ARM\Debug\</OutputPath>
@@ -181,9 +169,6 @@
       <Project>{0C297559-990A-4A49-846F-2E4BBBE4F8AA}</Project>
       <Name>MyApp.XamForms</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="MyApp.XamForms.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
