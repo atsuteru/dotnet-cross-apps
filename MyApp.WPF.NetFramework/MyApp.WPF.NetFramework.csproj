@@ -181,10 +181,6 @@
       <Project>{2C7D5BE5-2723-4EB3-92BC-E05AAB72506A}</Project>
       <Name>MyApp.Model.BusinessCard.Service</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MyApp.Model.BusinessCard\MyApp.Model.BusinessCard.csproj">
-      <Project>{bd0e82bd-4129-4aa7-b891-114fed491420}</Project>
-      <Name>MyApp.Model.BusinessCard</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MyApp.ViewModel\MyApp.ViewModel.csproj">
       <Project>{3aac5efa-5c31-446e-a515-e1e1ec5dd2f3}</Project>
       <Name>MyApp.ViewModel</Name>

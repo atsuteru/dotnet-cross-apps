@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyApp.Dependencies\MyApp.Dependencies.csproj" />
-    <ProjectReference Include="..\MyApp.Model.BusinessCard\MyApp.Model.BusinessCard.csproj" />
     <ProjectReference Include="..\MyApp\MyApp.Model\MyApp.Model.csproj" />
   </ItemGroup>
 

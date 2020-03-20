@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyApp.Model.BusinessCard.Service\MyApp.Model.BusinessCard.Service.csproj" />
-    <ProjectReference Include="..\MyApp.Model.BusinessCard\MyApp.Model.BusinessCard.csproj" />
     <ProjectReference Include="..\MyApp.ViewModel\MyApp.ViewModel.csproj" />
     <ProjectReference Include="..\MyApp\MyApp.Model\MyApp.Model.csproj" />
   </ItemGroup>
