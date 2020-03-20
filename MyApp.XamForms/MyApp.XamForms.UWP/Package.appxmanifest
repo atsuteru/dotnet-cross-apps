@@ -9,7 +9,7 @@
   <Identity
     Name="9f91853d-139e-4a85-b309-4844a011432b"
     Publisher="CN=kami_teru"
-    Version="1.0.2.0" />
+    Version="1.0.3.0" />
 
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
