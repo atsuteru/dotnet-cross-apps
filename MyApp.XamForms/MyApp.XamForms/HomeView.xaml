@@ -37,8 +37,8 @@
                 </Grid.RowDefinitions>
                 <Label Text="氏名" Grid.Column="1" Grid.Row="1" FontSize="Subtitle" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
                 <Label Text="組織" Grid.Column="1" Grid.Row="3" FontSize="Subtitle" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
-                <Entry x:Name="NameTextBox" Grid.Column="2" Grid.Row="1" FontSize="Medium" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding Name}" />
-                <Entry x:Name="OrganizationTextBox" Grid.Column="2" Grid.Row="3" FontSize="Medium" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Text="{Binding Organization}"/>
+                <Entry x:Name="NameTextBox" Grid.Column="2" Grid.Row="1" FontSize="Medium" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Text="氏名　太郎" />
+                <Entry x:Name="OrganizationTextBox" Grid.Column="2" Grid.Row="3" FontSize="Medium" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Text="組織　太郎"/>
             </Grid>
         </StackLayout>
         <StackLayout>
@@ -48,7 +48,7 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="0.5*"/>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="1" x:Name="GenerateButton" FontSize="Medium" Text="ビジネスカードを作成します" HorizontalOptions="Center" Command="{Binding SubmitCommand}"/>
+                <Button Grid.Row="1" x:Name="GenerateButton" FontSize="Medium" Text="ビジネスカードを作成します" HorizontalOptions="Center"/>
             </Grid>
         </StackLayout>
     </StackLayout>
