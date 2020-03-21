@@ -20,11 +20,8 @@ namespace MyApp.XamForms
             Locator.CurrentMutable.RegisterViewsForViewModels(GetType().Assembly);
 
             var screen = new MainViewModel(Locator.Current.GetService<ModelState>(), RxApp.MainThreadScheduler);
-
             Locator.CurrentMutable.RegisterConstant(screen, typeof(IScreen));
-            //MainPage = new RoutedViewHost() { Router = screen.Router };
-            var navigationPage = new RoutedViewHost() { Router = screen.Router };
-            MainPage = navigationPage;
+            MainPage = new RoutedViewHost() { Router = screen.Router };
         }
 
         protected override void OnStart()

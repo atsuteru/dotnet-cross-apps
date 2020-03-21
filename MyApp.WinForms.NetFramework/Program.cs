@@ -1,11 +1,11 @@
 ﻿using MyApp.Dependencies;
 using MyApp.Models;
+using MyApp.Models.Application;
 using MyApp.Services.BusinessCard;
 using MyApp.WinForms.NetFramework.Dependencies;
 using ReactiveUI;
 using Splat;
 using System;
-using System.Reactive.Concurrency;
 using System.Windows.Forms;
 
 namespace MyApp.WinForms.NetFramework
@@ -26,8 +26,7 @@ namespace MyApp.WinForms.NetFramework
             // Regist Dependencies
             Locator.CurrentMutable.Register<IMessageDialog>(() => new MessageDialog());
             // Regist Model
-            var messageBus = new MessageBus();
-            Locator.CurrentMutable.RegisterConstant(new ModelState(messageBus));
+            Locator.CurrentMutable.RegisterConstant(new ModelState(x => new ApplicationStarter(x)));
             // Regist ViewModels
             Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainForm).Assembly);
 

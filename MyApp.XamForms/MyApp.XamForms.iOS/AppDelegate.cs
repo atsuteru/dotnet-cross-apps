@@ -1,9 +1,9 @@
 ﻿using Foundation;
 using MyApp.Dependencies;
 using MyApp.Models;
+using MyApp.Models.Application;
 using MyApp.Services.BusinessCard;
 using MyApp.XamForms.Dependencies;
-using ReactiveUI;
 using Splat;
 using UIKit;
 
@@ -29,8 +29,7 @@ namespace MyApp.XamForms.iOS
             // Regist Dependencies
             Locator.CurrentMutable.Register<IMessageDialog>(() => new MessageDialog());
             // Regist Model
-            var messageBus = new MessageBus();
-            Locator.CurrentMutable.RegisterConstant(new ModelState(messageBus));
+            Locator.CurrentMutable.RegisterConstant(new ModelState(x => new ApplicationStarter(x)));
 
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());

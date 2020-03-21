@@ -4,9 +4,9 @@ using Android.OS;
 using Android.Runtime;
 using MyApp.Dependencies;
 using MyApp.Models;
+using MyApp.Models.Application;
 using MyApp.Services.BusinessCard;
 using MyApp.XamForms.Dependencies;
-using ReactiveUI;
 using Splat;
 
 namespace MyApp.XamForms.Droid
@@ -21,8 +21,7 @@ namespace MyApp.XamForms.Droid
             // Regist Dependencies
             Locator.CurrentMutable.Register<IMessageDialog>(() => new MessageDialog());
             // Regist Model
-            var messageBus = new MessageBus();
-            Locator.CurrentMutable.RegisterConstant(new ModelState(messageBus));
+            Locator.CurrentMutable.RegisterConstant(new ModelState(x => new ApplicationStarter(x)));
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;

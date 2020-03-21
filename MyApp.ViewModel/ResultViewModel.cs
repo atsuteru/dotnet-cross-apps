@@ -1,10 +1,11 @@
 ﻿using MyApp.Models.Application;
+using MyApp.Models.BusinessCard;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
+using System.Reactive;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using System.Windows.Input;
 
 namespace MyApp.ViewModel
 {
@@ -19,7 +20,7 @@ namespace MyApp.ViewModel
         [Reactive]
         public string Result { get; set; }
 
-        public ICommand BackCommand { get; protected set; }
+        public ReactiveCommand<Unit, InitializeResponse> BackCommand { get; protected set; }
 
         public ResultViewModel(IModelHostableScreen hostScreen) : base(hostScreen)
         {
@@ -28,18 +29,15 @@ namespace MyApp.ViewModel
         protected override void HandleActivation(CompositeDisposable d)
         {
             BackCommand = ReactiveCommand
-                .Create(() =>
+                .CreateFromObservable(() =>
                 {
-                    Screen.Model.Bus.SendMessage(new InitializeRequest());
-                })
-                .DisposeWith(d);
+                    return ((BusinessCardGenerator)Screen.Model.Current)
+                        .Initialize(new InitializeRequest());
+                });
 
-            Screen.Model.Bus.Listen<InitializeResponse>()
-                .ObserveOn(Screen.Scheduler)
-                .Subscribe(x =>
-                {
-                    Screen.Router.NavigateBack.Execute().Subscribe();
-                })
+            BackCommand
+                .Select(x => Screen.Router.NavigateBack.Execute().Subscribe())
+                .Subscribe()
                 .DisposeWith(d);
         }
     }

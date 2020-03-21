@@ -151,6 +151,10 @@
       <Project>{0c456b44-eb1d-48ae-b785-fc32ea76efe4}</Project>
       <Name>MyApp.Dependencies</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MyApp.Models\MyApp.Models.csproj">
+      <Project>{5283A26D-CBA2-4E30-95D1-F1B0AF5EED44}</Project>
+      <Name>MyApp.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyApp.Services.BusinessCard\MyApp.Services.BusinessCard.csproj">
       <Project>{2C7D5BE5-2723-4EB3-92BC-E05AAB72506A}</Project>
       <Name>MyApp.Services.BusinessCard</Name>

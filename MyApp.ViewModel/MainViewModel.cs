@@ -6,7 +6,6 @@ using System;
 using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using System.Threading.Tasks;
 
 namespace MyApp.ViewModel
 {
@@ -22,20 +21,14 @@ namespace MyApp.ViewModel
             ApplicationTitle = AppDomain.CurrentDomain.FriendlyName;
             Scheduler = scheduler;
 
-            InitializeResponse initializeResult;
-            using(var d = new CompositeDisposable())
-            {
-                var completionSource = new TaskCompletionSource<InitializeResponse>();
-                Model.Bus.Listen<InitializeResponse>()
-                    .Subscribe(x =>
-                    {
-                        completionSource.SetResult(x);
-                    })
-                    .DisposeWith(d);
-                Model.Bus.SendMessage(new InitializeRequest());
-                initializeResult = completionSource.Task.Result;
-            }
-            Router.NavigateAndReset.Execute(new HomeViewModel(this)).Subscribe();
+            ((ApplicationStarter)Model.Current)
+                .Initialize(new InitializeRequest())
+                .Select(x =>
+                {
+                    return new HomeViewModel(this);
+                })
+                .Select(Router.Navigate.Execute)
+                .Subscribe();
         }
 
         protected override void HandleActivation(CompositeDisposable d)

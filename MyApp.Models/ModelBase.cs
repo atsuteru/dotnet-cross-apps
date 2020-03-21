@@ -21,6 +21,8 @@ namespace MyApp.Models
             HandleActivation(Disposables);
         }
 
-        protected abstract void HandleActivation(CompositeDisposable d);
+        protected virtual void HandleActivation(CompositeDisposable d)
+        {
+        }
     }
 }

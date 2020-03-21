@@ -6,9 +6,8 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reactive.Concurrency;
-using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using System.Threading;
+using System.Threading.Tasks;
 
 namespace MyApp.Models.BusinessCard
 {
@@ -18,24 +17,18 @@ namespace MyApp.Models.BusinessCard
         {
         }
 
-        protected override void HandleActivation(CompositeDisposable d)
+        public IObservable<GenerateResponse> Generate(GenerateRequest request)
         {
-            Model.Bus.Listen<GenerateRequest>()
-                .ObserveOn(ThreadPoolScheduler.Instance)
-                .Subscribe(Generate)
-                .DisposeWith(d);
-
-            Model.Bus.Listen<InitializeRequest>()
-                .Subscribe(Initialize)
-                .DisposeWith(d);
+            return Observable
+                .FromAsync(() => GenerateAsync(request))
+                .SubscribeOn(ThreadPoolScheduler.Instance);
         }
 
-        protected virtual void Generate(GenerateRequest request)
+        protected virtual Task<GenerateResponse> GenerateAsync(GenerateRequest request)
         {
             string result = null;
             try
             {
-                Thread.Sleep(2000);
                 var pdfData = Locator.Current.GetService<IBusinessCardService>()
                     .GeneratePDF(new GenerateParameter()
                     {
@@ -59,12 +52,18 @@ namespace MyApp.Models.BusinessCard
                     });
             }
 
-            Model.Bus.SendMessage(new GenerateResponse() { Result = result });
+            return Task.FromResult(new GenerateResponse() { Result = result });
         }
 
-        protected virtual void Initialize(InitializeRequest request)
+        public IObservable<InitializeResponse> Initialize(InitializeRequest request)
         {
-            Model.Bus.SendMessage(new InitializeResponse());
+            return Observable
+                .FromAsync(() => InitializeAsync(request));
+        }
+
+        protected virtual Task<InitializeResponse> InitializeAsync(InitializeRequest request)
+        {
+            return Task.FromResult(new InitializeResponse());
         }
     }
 }

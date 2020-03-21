@@ -1,20 +1,16 @@
 ﻿using MyApp.Models.Application;
-using ReactiveUI;
+using System;
 
 namespace MyApp.Models
 {
     public class ModelState
     {
-        public IMessageBus Bus { get; }
-
         public ModelBase Current { get; protected set; }
 
-        public ModelState(IMessageBus bus)
+        public ModelState(Func<ModelState, ApplicationStarter> starterFactory)
         {
-            Bus = bus;
-
             // Set ApplicationStarter as startup domain
-            Current = new ApplicationStarter(this);
+            Current = starterFactory.Invoke(this);
         }
 
         public void ChangeCurrent(ModelBase newModel)

@@ -1,6 +1,7 @@
 ﻿using MyApp.Models.BusinessCard;
 using System;
-using System.Reactive.Disposables;
+using System.Reactive.Linq;
+using System.Threading.Tasks;
 
 namespace MyApp.Models.Application
 {
@@ -9,18 +10,16 @@ namespace MyApp.Models.Application
         public ApplicationStarter(ModelState model) : base(model)
         {
         }
-
-        protected override void HandleActivation(CompositeDisposable d)
+        public IObservable<InitializeResponse> Initialize(InitializeRequest request)
         {
-            Model.Bus.Listen<InitializeRequest>()
-                .Subscribe(Initialize)
-                .DisposeWith(Disposables);
+            return Observable
+                .FromAsync(() => InitializeAsync(request));
         }
 
-        protected virtual void Initialize(InitializeRequest request)
+        protected virtual Task<InitializeResponse> InitializeAsync(InitializeRequest request)
         {
             Model.ChangeCurrent(new BusinessCardGenerator(Model));
-            Model.Bus.SendMessage(new InitializeResponse());
+            return Task.FromResult(new InitializeResponse());
         }
     }
 }
