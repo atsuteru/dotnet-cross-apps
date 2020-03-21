@@ -3,7 +3,6 @@ using MyApp.Models.Application;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
-using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 
@@ -14,12 +13,9 @@ namespace MyApp.ViewModel
         [Reactive]
         public string ApplicationTitle { get; set; }
 
-        public override IScheduler Scheduler { get; }
-
-        public MainViewModel(ModelState model, IScheduler scheduler): base(model)
+        public MainViewModel(ModelState model): base(model)
         {
             ApplicationTitle = AppDomain.CurrentDomain.FriendlyName;
-            Scheduler = scheduler;
 
             ((ApplicationStarter)Model.Current)
                 .Initialize(new InitializeRequest())

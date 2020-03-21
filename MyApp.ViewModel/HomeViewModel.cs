@@ -3,10 +3,8 @@ using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
 using System.Reactive;
-using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using System.Windows.Input;
 
 namespace MyApp.ViewModel
 {

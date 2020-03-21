@@ -2,7 +2,6 @@
 using MyApp.ViewModel;
 using ReactiveUI;
 using Splat;
-using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 
 namespace MyApp.WPF
@@ -18,9 +17,7 @@ namespace MyApp.WPF
         {
             InitializeComponent();
 
-            ViewModel = new MainViewModel(
-                Locator.Current.GetService<ModelState>(),
-                new DispatcherScheduler(Dispatcher));
+            ViewModel = new MainViewModel(Locator.Current.GetService<ModelState>());
             RoutedViewHost.Router = ViewModel.Router;
 
             this.WhenActivated((d) =>

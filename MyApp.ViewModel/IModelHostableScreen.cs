@@ -7,8 +7,6 @@ namespace MyApp.ViewModel
     public interface IModelHostableScreen: IScreen
     {
         ModelState Model { get; }
-
-        IScheduler Scheduler { get; }
     }
 
 }

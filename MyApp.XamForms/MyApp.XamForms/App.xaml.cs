@@ -19,7 +19,7 @@ namespace MyApp.XamForms
             // Regist ViewModels
             Locator.CurrentMutable.RegisterViewsForViewModels(GetType().Assembly);
 
-            var screen = new MainViewModel(Locator.Current.GetService<ModelState>(), RxApp.MainThreadScheduler);
+            var screen = new MainViewModel(Locator.Current.GetService<ModelState>());
             Locator.CurrentMutable.RegisterConstant(screen, typeof(IScreen));
             MainPage = new RoutedViewHost() { Router = screen.Router };
         }

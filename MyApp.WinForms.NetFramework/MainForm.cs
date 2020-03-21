@@ -2,10 +2,8 @@
 using MyApp.ViewModel;
 using ReactiveUI;
 using Splat;
-using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Windows.Forms;
-using System.Windows.Threading;
 
 namespace MyApp.WinForms.NetFramework
 {
@@ -21,9 +19,7 @@ namespace MyApp.WinForms.NetFramework
         {
             InitializeComponent();
 
-            ViewModel = new MainViewModel(
-                Locator.Current.GetService<ModelState>(),
-                new DispatcherScheduler(Dispatcher.CurrentDispatcher));
+            ViewModel = new MainViewModel(Locator.Current.GetService<ModelState>());
             RoutedControlHost.Router = ViewModel.Router;
 
             this.WhenActivated((d) =>
