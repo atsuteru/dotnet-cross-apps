@@ -48,10 +48,11 @@ namespace MyApp.ViewModel
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.ToString());
-                Locator.Current.GetService<IMessageDialog>().ShowAlertMessage("Generation error", ex.Message, () =>
-                {
-                    result = ex.Message;
-                });
+                Locator.Current.GetService<IMessageDialog>()
+                    .ShowAlertMessage("Generation error", ex.Message, () =>
+                    {
+                        result = ex.Message;
+                    });
             }
 
             HostScreen.Router.Navigate.Execute(new ResultViewModel(HostScreen)
