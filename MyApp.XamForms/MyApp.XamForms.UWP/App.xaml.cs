@@ -1,9 +1,8 @@
 ﻿using MyApp.Dependencies;
-using MyApp.Services;
-using MyApp.XamForms.UWP.ContainerExtension;
+using MyApp.Services.BusinessCard;
+using MyApp.XamForms.Dependencies;
 using Splat;
 using System;
-using Unity;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
@@ -23,8 +22,10 @@ namespace MyApp.XamForms.UWP
         /// </summary>
         public App()
         {
-            Locator.CurrentMutable.RegisterConstant((ServiceContainer)new ServiceContainer().AddNewExtension<ServicesContainerExtension>());
-            Locator.CurrentMutable.RegisterConstant((DependencyContainer)new DependencyContainer().AddNewExtension<DependenciesContainerExtension>());
+            // Regist Services
+            Locator.CurrentMutable.RegisterLazySingleton<IBusinessCardService>(() => new BusinessCardService());
+            // Regist Dependencies
+            Locator.CurrentMutable.Register<IMessageDialog>(() => new MessageDialog());
 
             this.InitializeComponent();
             this.Suspending += OnSuspending;

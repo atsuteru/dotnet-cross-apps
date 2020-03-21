@@ -1,10 +1,9 @@
 ﻿using Foundation;
 using MyApp.Dependencies;
-using MyApp.Services;
-using MyApp.XamForms.iOS.ContainerExtension;
+using MyApp.Services.BusinessCard;
+using MyApp.XamForms.Dependencies;
 using Splat;
 using UIKit;
-using Unity;
 
 namespace MyApp.XamForms.iOS
 {
@@ -23,8 +22,10 @@ namespace MyApp.XamForms.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            Locator.CurrentMutable.RegisterConstant((ServiceContainer)new ServiceContainer().AddNewExtension<ServicesContainerExtension>());
-            Locator.CurrentMutable.RegisterConstant((DependencyContainer)new DependencyContainer().AddNewExtension<DependenciesContainerExtension>());
+            // Regist Services
+            Locator.CurrentMutable.RegisterLazySingleton<IBusinessCardService>(() => new BusinessCardService());
+            // Regist Dependencies
+            Locator.CurrentMutable.Register<IMessageDialog>(() => new MessageDialog());
 
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());

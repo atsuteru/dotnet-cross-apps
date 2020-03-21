@@ -1,10 +1,9 @@
 ﻿using MyApp.Dependencies;
-using MyApp.Services;
-using MyApp.WPF.NetFramework.ContainerExtension;
+using MyApp.Services.BusinessCard;
+using MyApp.WPF.NetFramework.Dependencies;
 using ReactiveUI;
 using Splat;
 using System.Windows;
-using Unity;
 
 namespace MyApp.WPF.NetFramework
 {
@@ -15,8 +14,11 @@ namespace MyApp.WPF.NetFramework
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            Locator.CurrentMutable.RegisterConstant((ServiceContainer)new ServiceContainer().AddNewExtension<ServicesContainerExtension>());
-            Locator.CurrentMutable.RegisterConstant((DependencyContainer)new DependencyContainer().AddNewExtension<DependenciesContainerExtension>());
+            // Regist Services
+            Locator.CurrentMutable.RegisterLazySingleton<IBusinessCardService>(() => new BusinessCardService());
+            // Regist Dependencies
+            Locator.CurrentMutable.Register<IMessageDialog>(() => new MessageDialog());
+            // Regist ViewModels
             Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainWindow).Assembly);
 
             base.OnStartup(e);

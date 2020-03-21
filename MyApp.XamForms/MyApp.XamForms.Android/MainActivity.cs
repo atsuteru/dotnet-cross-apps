@@ -3,10 +3,9 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using MyApp.Dependencies;
-using MyApp.Services;
-using MyApp.XamForms.Droid.ContainerExtension;
+using MyApp.Services.BusinessCard;
+using MyApp.XamForms.Dependencies;
 using Splat;
-using Unity;
 
 namespace MyApp.XamForms.Droid
 {
@@ -15,10 +14,10 @@ namespace MyApp.XamForms.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            Locator.CurrentMutable.RegisterConstant((DependencyContainer)
-                new DependencyContainer().AddNewExtension<DependenciesContainerExtension>());
-            Locator.CurrentMutable.RegisterConstant((ServiceContainer)
-                new ServiceContainer().AddNewExtension<ServicesContainerExtension>());
+            // Regist Services
+            Locator.CurrentMutable.RegisterLazySingleton<IBusinessCardService>(() => new BusinessCardService());
+            // Regist Dependencies
+            Locator.CurrentMutable.Register<IMessageDialog>(() => new MessageDialog());
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;

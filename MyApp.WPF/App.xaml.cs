@@ -2,12 +2,11 @@
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using MyApp.Dependencies;
-using MyApp.Services;
-using MyApp.WPF.ContainerExtension;
+using MyApp.Services.BusinessCard;
+using MyApp.WPF.Dependencies;
 using ReactiveUI;
 using Splat;
 using System.Windows;
-using Unity;
 
 namespace MyApp.WPF
 {
@@ -21,8 +20,11 @@ namespace MyApp.WPF
             AppCenter.Start("056cd67f-fb47-4a01-936f-4df5b63a0dcf",
                    typeof(Analytics), typeof(Crashes));
 
-            Locator.CurrentMutable.RegisterConstant((ServiceContainer)new ServiceContainer().AddNewExtension<ServicesContainerExtension>());
-            Locator.CurrentMutable.RegisterConstant((DependencyContainer)new DependencyContainer().AddNewExtension<DependenciesContainerExtension>());
+            // Regist Services
+            Locator.CurrentMutable.RegisterLazySingleton<IBusinessCardService>(() => new BusinessCardService());
+            // Regist Dependencies
+            Locator.CurrentMutable.Register<IMessageDialog>(() => new MessageDialog());
+            // Regist ViewModels
             Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainWindow).Assembly);
 
             base.OnStartup(e);

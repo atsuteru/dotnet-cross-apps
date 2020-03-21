@@ -1,11 +1,10 @@
 ﻿using MyApp.Dependencies;
-using MyApp.Services;
-using MyApp.WinForms.NetFramework.ContainerExtension;
+using MyApp.Services.BusinessCard;
+using MyApp.WinForms.NetFramework.Dependencies;
 using ReactiveUI;
 using Splat;
 using System;
 using System.Windows.Forms;
-using Unity;
 
 namespace MyApp.WinForms.NetFramework
 {
@@ -20,8 +19,11 @@ namespace MyApp.WinForms.NetFramework
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Locator.CurrentMutable.RegisterConstant((ServiceContainer)new ServiceContainer().AddNewExtension<ServicesContainerExtension>());
-            Locator.CurrentMutable.RegisterConstant((DependencyContainer)new DependencyContainer().AddNewExtension<DependenciesContainerExtension>());
+            // Regist Services
+            Locator.CurrentMutable.RegisterLazySingleton<IBusinessCardService>(() => new BusinessCardService());
+            // Regist Dependencies
+            Locator.CurrentMutable.Register<IMessageDialog>(() => new MessageDialog());
+            // Regist ViewModels
             Locator.CurrentMutable.RegisterViewsForViewModels(typeof(MainForm).Assembly);
 
             Application.Run(new MainForm());

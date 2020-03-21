@@ -15,6 +15,7 @@ namespace MyApp.XamForms
         {
             InitializeComponent();
 
+            // Regist ViewModels
             Locator.CurrentMutable.RegisterViewsForViewModels(GetType().Assembly);
 
             var screen = new MainViewModel();
