@@ -1,6 +1,8 @@
 ﻿using MyApp.Dependencies;
+using MyApp.Models;
 using MyApp.Services.BusinessCard;
 using MyApp.XamForms.Dependencies;
+using ReactiveUI;
 using Splat;
 using System;
 using Windows.ApplicationModel;
@@ -26,6 +28,9 @@ namespace MyApp.XamForms.UWP
             Locator.CurrentMutable.RegisterLazySingleton<IBusinessCardService>(() => new BusinessCardService());
             // Regist Dependencies
             Locator.CurrentMutable.Register<IMessageDialog>(() => new MessageDialog());
+            // Regist Model
+            var messageBus = new MessageBus();
+            Locator.CurrentMutable.RegisterConstant(new ModelState(messageBus));
 
             this.InitializeComponent();
             this.Suspending += OnSuspending;

@@ -3,8 +3,10 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using MyApp.Dependencies;
+using MyApp.Models;
 using MyApp.Services.BusinessCard;
 using MyApp.XamForms.Dependencies;
+using ReactiveUI;
 using Splat;
 
 namespace MyApp.XamForms.Droid
@@ -18,6 +20,9 @@ namespace MyApp.XamForms.Droid
             Locator.CurrentMutable.RegisterLazySingleton<IBusinessCardService>(() => new BusinessCardService());
             // Regist Dependencies
             Locator.CurrentMutable.Register<IMessageDialog>(() => new MessageDialog());
+            // Regist Model
+            var messageBus = new MessageBus();
+            Locator.CurrentMutable.RegisterConstant(new ModelState(messageBus));
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;

@@ -1,7 +1,9 @@
 ﻿using Foundation;
 using MyApp.Dependencies;
+using MyApp.Models;
 using MyApp.Services.BusinessCard;
 using MyApp.XamForms.Dependencies;
+using ReactiveUI;
 using Splat;
 using UIKit;
 
@@ -26,6 +28,9 @@ namespace MyApp.XamForms.iOS
             Locator.CurrentMutable.RegisterLazySingleton<IBusinessCardService>(() => new BusinessCardService());
             // Regist Dependencies
             Locator.CurrentMutable.Register<IMessageDialog>(() => new MessageDialog());
+            // Regist Model
+            var messageBus = new MessageBus();
+            Locator.CurrentMutable.RegisterConstant(new ModelState(messageBus));
 
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());

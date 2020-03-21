@@ -7,21 +7,14 @@ namespace MyApp.ViewModel
     {
         public ViewModelActivator Activator { get; }
 
-        protected bool IsViewModelBound { get; private set; }
-
         public ActivatableViewModel()
         {
             Activator = new ViewModelActivator();
 
             this.WhenActivated(disposables =>
             {
-                if (IsViewModelBound)
-                {
-                    return;
-                }
                 HandleActivation(disposables);
                 Disposable.Create(() => HandleDeactivation()).DisposeWith(disposables);
-                IsViewModelBound = true;
             });
         }
 

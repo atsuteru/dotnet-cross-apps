@@ -1,17 +1,14 @@
-﻿using MyApp.Dependencies;
-using MyApp.Services.BusinessCard;
+﻿using MyApp.Models.BusinessCard;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
-using Splat;
 using System;
-using System.Diagnostics;
-using System.IO;
-using System.Threading.Tasks;
+using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using System.Windows.Input;
 
 namespace MyApp.ViewModel
 {
-    public class HomeViewModel: RoutableViewModel
+    public class HomeViewModel: RouteViewModelBase
     {
         [Reactive]
         public string Name { get; set; }
@@ -19,48 +16,42 @@ namespace MyApp.ViewModel
         [Reactive]
         public string Organization { get; set; }
 
-        public ICommand SubmitCommand { get; }
+        public ICommand SubmitCommand { get; protected set; }
 
-        public HomeViewModel(IScreen hostScreen) : base(hostScreen)
+        public HomeViewModel(IModelHostableScreen hostScreen) : base(hostScreen)
         {
-            SubmitCommand = ReactiveCommand.CreateFromTask(ProcessSubmit);
         }
 
-        private async Task ProcessSubmit()
+        protected override void HandleActivation(CompositeDisposable d)
         {
-            string result = null;
-            try
-            {
-                result = await Task.Run(async () =>
-                {
-                    var pdfData = await Locator.Current.GetService<IBusinessCardService>()
-                        .GeneratePDF(new GenerateParameter()
-                        {
-                            Name = Name,
-                            Organization = Organization
-                        });
-                    var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), Path.GetTempFileName());
-                    File.WriteAllBytes(filePath, pdfData);
-                    Debug.WriteLine(filePath);
-                    return filePath;
-                });
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.ToString());
-                Locator.Current.GetService<IMessageDialog>()
-                    .ShowAlertMessage("Generation error", ex.Message, () =>
-                    {
-                        result = ex.Message;
-                    });
-            }
+            IsCommandExecutable = false;
 
-            HostScreen.Router.Navigate.Execute(new ResultViewModel(HostScreen)
-            {
-                Name = Name,
-                Organization = Organization,
-                Result = result
-            }).Subscribe();
+            SubmitCommand = ReactiveCommand
+                .Create(() =>
+                {
+                    IsCommandExecutable = false;
+                    Screen.Model.Bus.SendMessage(new GenerateRequest()
+                    {
+                        Name = Name,
+                        Organization = Organization
+                    });
+                }, CommandExecutable)
+                .DisposeWith(d);
+
+            Screen.Model.Bus.Listen<GenerateResponse>()
+                .ObserveOn(Screen.Scheduler)
+                .Subscribe(response =>
+                {
+                    Screen.Router.Navigate.Execute(new ResultViewModel(Screen)
+                    {
+                        Name = Name,
+                        Organization = Organization,
+                        Result = response.Result
+                    }).Subscribe();
+                })
+                .DisposeWith(d);
+
+            IsCommandExecutable = true;
         }
     }
 }

@@ -4,7 +4,7 @@ using ReactiveUI.XamForms;
 using System;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using System.Threading.Tasks;
+using Xamarin.Forms;
 using static MyApp.XamForms.Dependencies.MessageDialog;
 
 namespace MyApp.XamForms
@@ -14,6 +14,7 @@ namespace MyApp.XamForms
         public HomeView()
         {
             InitializeComponent();
+            NavigationPage.SetHasBackButton(this, false);
 
             this.WhenActivated((d) =>
             {
@@ -27,12 +28,15 @@ namespace MyApp.XamForms
             this.Bind(ViewModel, vm => vm.Organization, v => v.OrganizationTextBox.Text).DisposeWith(d);
             this.BindCommand(ViewModel, vm => vm.SubmitCommand, v => v.GenerateButton).DisposeWith(d);
 
-            MessageBus.Current.Listen<MessageDialogRequest>().Subscribe(async (x) => await HandleMessageDialogRequest(x)).DisposeWith(d);
+            MessageBus.Current.Listen<MessageDialogRequest>()
+                .ObserveOn(RxApp.MainThreadScheduler)
+                .Subscribe(HandleMessageDialogRequest)
+                .DisposeWith(d);
         }
 
-        protected async Task HandleMessageDialogRequest(MessageDialogRequest request)
+        protected void HandleMessageDialogRequest(MessageDialogRequest request)
         {
-            await DisplayAlert(request.Title, request.Message, "OK");
+            DisplayAlert(request.Title, request.Message, "OK");
         }
     }
 }

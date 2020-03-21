@@ -1,6 +1,7 @@
 ﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using MyApp.Models;
 using MyApp.ViewModel;
 using ReactiveUI;
 using ReactiveUI.XamForms;
@@ -18,9 +19,12 @@ namespace MyApp.XamForms
             // Regist ViewModels
             Locator.CurrentMutable.RegisterViewsForViewModels(GetType().Assembly);
 
-            var screen = new MainViewModel();
+            var screen = new MainViewModel(Locator.Current.GetService<ModelState>(), RxApp.MainThreadScheduler);
+
             Locator.CurrentMutable.RegisterConstant(screen, typeof(IScreen));
-            MainPage = new RoutedViewHost() { Router = screen.Router };
+            //MainPage = new RoutedViewHost() { Router = screen.Router };
+            var navigationPage = new RoutedViewHost() { Router = screen.Router };
+            MainPage = navigationPage;
         }
 
         protected override void OnStart()

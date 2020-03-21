@@ -1,8 +1,8 @@
 ﻿using MyApp.ViewModel;
 using ReactiveUI;
 using ReactiveUI.XamForms;
-using System.ComponentModel;
 using System.Reactive.Disposables;
+using Xamarin.Forms;
 
 namespace MyApp.XamForms
 {
@@ -13,6 +13,7 @@ namespace MyApp.XamForms
         public ResultView()
         {
             InitializeComponent();
+            NavigationPage.SetHasBackButton(this, false);
 
             this.WhenActivated((d) =>
             {
