@@ -13,7 +13,7 @@ namespace MyApp.Models.BusinessCard
 {
     public class BusinessCardGenerator : ModelBase
     {
-        public BusinessCardGenerator(ModelState model) : base(model)
+        public BusinessCardGenerator(IModelHost host) : base(host)
         {
         }
 

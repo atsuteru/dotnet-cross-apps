@@ -4,9 +4,9 @@ namespace MyApp.ViewModel
 {
     public abstract class ScreenHostViewModelBase : ScreenHostableViewModel, IModelHostableScreen
     {
-        public ModelState Model { get; }
+        public IModelHost Model { get; }
 
-        public ScreenHostViewModelBase(ModelState model)
+        public ScreenHostViewModelBase(IModelHost model)
         {
             Model = model;
         }

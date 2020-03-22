@@ -21,7 +21,7 @@ namespace MyApp.XamForms.Droid
             // Regist Dependencies
             Locator.CurrentMutable.Register<IMessageDialog>(() => new MessageDialog());
             // Regist Model
-            Locator.CurrentMutable.RegisterConstant(new ModelState(x => new ApplicationStarter(x)));
+            Locator.CurrentMutable.RegisterConstant<IModelHost>(new ModelHost(x => new ApplicationStarter(x)));
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;

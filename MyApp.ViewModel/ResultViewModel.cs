@@ -31,7 +31,7 @@ namespace MyApp.ViewModel
             BackCommand = ReactiveCommand
                 .CreateFromObservable(() =>
                 {
-                    return ((BusinessCardGenerator)Screen.Model.Current)
+                    return ((BusinessCardGenerator)Screen.Model.Router.Current)
                         .Initialize(new InitializeRequest());
                 });
 

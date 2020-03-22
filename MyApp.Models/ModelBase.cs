@@ -1,28 +1,12 @@
-﻿using System;
-using System.Reactive.Disposables;
-
-namespace MyApp.Models
+﻿namespace MyApp.Models
 {
-    public abstract class ModelBase : IDisposable
+    public abstract class ModelBase : IModel
     {
-        public ModelState Model { get; }
+        public IModelHost Host { get; }
 
-        protected CompositeDisposable Disposables { get; }
-
-        public void Dispose()
+        public ModelBase(IModelHost host)
         {
-            Disposables.Dispose();
-        }
-
-        public ModelBase(ModelState model)
-        {
-            Model = model;
-            Disposables = new CompositeDisposable();
-            HandleActivation(Disposables);
-        }
-
-        protected virtual void HandleActivation(CompositeDisposable d)
-        {
+            Host = host;
         }
     }
 }

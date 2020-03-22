@@ -7,7 +7,7 @@ namespace MyApp.Models.Application
 {
     public class ApplicationStarter : ModelBase
     {
-        public ApplicationStarter(ModelState model) : base(model)
+        public ApplicationStarter(IModelHost host) : base(host)
         {
         }
         public IObservable<InitializeResponse> Initialize(InitializeRequest request)
@@ -18,7 +18,7 @@ namespace MyApp.Models.Application
 
         protected virtual Task<InitializeResponse> InitializeAsync(InitializeRequest request)
         {
-            Model.ChangeCurrent(new BusinessCardGenerator(Model));
+            Host.Router.Navigate(new BusinessCardGenerator(Host));
             return Task.FromResult(new InitializeResponse());
         }
     }

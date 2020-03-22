@@ -13,11 +13,11 @@ namespace MyApp.ViewModel
         [Reactive]
         public string ApplicationTitle { get; set; }
 
-        public MainViewModel(ModelState model): base(model)
+        public MainViewModel(IModelHost model): base(model)
         {
             ApplicationTitle = AppDomain.CurrentDomain.FriendlyName;
 
-            ((ApplicationStarter)Model.Current)
+            ((ApplicationStarter)Model.Router.Current)
                 .Initialize(new InitializeRequest())
                 .Select(x =>
                 {

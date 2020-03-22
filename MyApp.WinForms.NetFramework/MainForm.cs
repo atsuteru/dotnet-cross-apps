@@ -19,7 +19,7 @@ namespace MyApp.WinForms.NetFramework
         {
             InitializeComponent();
 
-            ViewModel = new MainViewModel(Locator.Current.GetService<ModelState>());
+            ViewModel = new MainViewModel(Locator.Current.GetService<IModelHost>());
             RoutedControlHost.Router = ViewModel.Router;
 
             this.WhenActivated((d) =>

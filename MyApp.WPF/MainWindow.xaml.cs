@@ -17,7 +17,7 @@ namespace MyApp.WPF
         {
             InitializeComponent();
 
-            ViewModel = new MainViewModel(Locator.Current.GetService<ModelState>());
+            ViewModel = new MainViewModel(Locator.Current.GetService<IModelHost>());
             RoutedViewHost.Router = ViewModel.Router;
 
             this.WhenActivated((d) =>

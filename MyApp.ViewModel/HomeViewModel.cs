@@ -29,7 +29,7 @@ namespace MyApp.ViewModel
             SubmitCommand = ReactiveCommand
                 .CreateFromObservable(() =>
                 {
-                    return ((BusinessCardGenerator)Screen.Model.Current)
+                    return ((BusinessCardGenerator)Screen.Model.Router.Current)
                         .Generate(new GenerateRequest()
                         {
                             Name = Name,

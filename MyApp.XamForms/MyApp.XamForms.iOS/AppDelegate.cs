@@ -29,7 +29,7 @@ namespace MyApp.XamForms.iOS
             // Regist Dependencies
             Locator.CurrentMutable.Register<IMessageDialog>(() => new MessageDialog());
             // Regist Model
-            Locator.CurrentMutable.RegisterConstant(new ModelState(x => new ApplicationStarter(x)));
+            Locator.CurrentMutable.RegisterConstant<IModelHost>(new ModelHost(x => new ApplicationStarter(x)));
 
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
