@@ -2,7 +2,7 @@
 
 namespace MyApp.ViewModel
 {
-    public abstract class ScreenHostViewModelBase : ScreenHostableViewModel, IModelHostableScreen
+    public abstract class ScreenHostViewModelBase : ScreenHostableViewModel, IModelAccessableScreen
     {
         public IModelHost Model { get; }
 

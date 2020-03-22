@@ -2,7 +2,7 @@
 
 namespace MyApp.Models
 {
-    public interface IModel
+    public interface IRoutableModel
     {
         IModelHost Host { get; }
     }

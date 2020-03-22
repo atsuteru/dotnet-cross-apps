@@ -22,7 +22,7 @@ namespace MyApp.ViewModel
 
         public ReactiveCommand<Unit, InitializeResponse> BackCommand { get; protected set; }
 
-        public ResultViewModel(IModelHostableScreen hostScreen) : base(hostScreen)
+        public ResultViewModel(IModelAccessableScreen hostScreen) : base(hostScreen)
         {
         }
 

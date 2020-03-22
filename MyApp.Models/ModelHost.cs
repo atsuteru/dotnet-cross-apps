@@ -7,7 +7,7 @@ namespace MyApp.Models
     {
         public ModelRoutingState Router { get; }
 
-        public ModelHost(Func<IModelHost, IModel> starterFactory)
+        public ModelHost(Func<IModelHost, IRoutableModel> starterFactory)
         {
             Router = new ModelRoutingState();
             Router.Navigate(starterFactory.Invoke(this));

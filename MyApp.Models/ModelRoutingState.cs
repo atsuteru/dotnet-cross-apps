@@ -2,9 +2,9 @@
 {
     public class ModelRoutingState
     {
-        public IModel Current { get; protected set; }
+        public IRoutableModel Current { get; protected set; }
 
-        public void Navigate(IModel model)
+        public void Navigate(IRoutableModel model)
         {
             Current = model;
         }

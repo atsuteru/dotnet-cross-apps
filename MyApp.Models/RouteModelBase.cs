@@ -1,10 +1,10 @@
 ﻿namespace MyApp.Models
 {
-    public abstract class ModelBase : IModel
+    public abstract class RouteModelBase : IRoutableModel
     {
         public IModelHost Host { get; }
 
-        public ModelBase(IModelHost host)
+        public RouteModelBase(IModelHost host)
         {
             Host = host;
         }

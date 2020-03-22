@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MyApp.Models.BusinessCard
 {
-    public class BusinessCardGenerator : ModelBase
+    public class BusinessCardGenerator : RouteModelBase
     {
         public BusinessCardGenerator(IModelHost host) : base(host)
         {

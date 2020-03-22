@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MyApp.Models.Application
 {
-    public class ApplicationStarter : ModelBase
+    public class ApplicationStarter : RouteModelBase
     {
         public ApplicationStarter(IModelHost host) : base(host)
         {

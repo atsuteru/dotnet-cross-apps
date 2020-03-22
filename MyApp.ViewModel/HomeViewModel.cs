@@ -18,7 +18,7 @@ namespace MyApp.ViewModel
 
         public ReactiveCommand<Unit, GenerateResponse> SubmitCommand { get; protected set; }
 
-        public HomeViewModel(IModelHostableScreen hostScreen) : base(hostScreen)
+        public HomeViewModel(IModelAccessableScreen hostScreen) : base(hostScreen)
         {
         }
 
