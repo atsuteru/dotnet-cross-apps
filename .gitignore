@@ -223,6 +223,11 @@ ClientBin/
 *.pfx
 *.jks
 *.cer
+*.csr
+*.key
+*.mobileprovision
+*.p12
+*.pem
 *.publishsettings
 orleans.codegen.cs
 
@@ -340,3 +345,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+

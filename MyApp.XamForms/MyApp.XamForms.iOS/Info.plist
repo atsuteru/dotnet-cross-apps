@@ -23,9 +23,9 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>MyApp.XamForms.iOS</string>
+	<string>9SZ2BVW8GQ.MyApp.XamForms.iOS</string>
 	<key>CFBundleIdentifier</key>
-	<string>test.kami_teru.MyApp.XamForms.iOS</string>
+	<string>test.kami-teru.MyXamarinApp</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
