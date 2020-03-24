@@ -37,7 +37,7 @@ namespace MyApp.Models.BusinessCard
                     })
                     .Result;
                 var filePath = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), 
                     Path.GetTempFileName());
                 File.WriteAllBytes(filePath, pdfData);
                 result = filePath;
