@@ -36,9 +36,10 @@ namespace MyApp.Models.BusinessCard
                         Organization = request.Organization
                     })
                     .Result;
+                var creationTime = DateTime.Now;
                 var filePath = Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), 
-                    Path.GetTempFileName());
+                    $"{creationTime:yyyyMMdd_HHmmss}_{request.Name}.pdf");
                 File.WriteAllBytes(filePath, pdfData);
                 result = filePath;
             }
