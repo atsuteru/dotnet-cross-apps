@@ -8,8 +8,6 @@ namespace MyApp.XamForms
 {
     public partial class ResultView : ReactiveContentPage<ResultViewModel>
     {
-        protected bool IsViewModelBound { get; private set; }
-
         public ResultView()
         {
             InitializeComponent();
@@ -17,12 +15,7 @@ namespace MyApp.XamForms
 
             this.WhenActivated((d) =>
             {
-                if (IsViewModelBound)
-                {
-                    return;
-                }
                 HandleViewModelBound(d);
-                IsViewModelBound = true;
             });
         }
 

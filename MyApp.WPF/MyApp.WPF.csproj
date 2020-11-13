@@ -9,7 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.0.0" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.0.0" />
-    <PackageReference Include="ReactiveUI.WPF" Version="11.0.1" />
+    <PackageReference Include="ReactiveUI.WPF" Version="12.1.5" />
   </ItemGroup>
 
   <ItemGroup>

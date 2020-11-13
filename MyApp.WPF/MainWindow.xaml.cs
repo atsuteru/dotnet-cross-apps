@@ -11,8 +11,6 @@ namespace MyApp.WPF
     /// </summary>
     public partial class MainWindow : ReactiveWindow<MainViewModel>
     {
-        protected bool IsViewModelBound { get; private set; }
-
         public MainWindow()
         {
             InitializeComponent();
@@ -22,12 +20,7 @@ namespace MyApp.WPF
 
             this.WhenActivated((d) =>
             {
-                if (IsViewModelBound)
-                {
-                    return;
-                }
                 HandleViewModelBound(d);
-                IsViewModelBound = true;
             });
         }
 

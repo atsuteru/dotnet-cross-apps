@@ -9,20 +9,13 @@ namespace MyApp.WPF
     /// </summary>
     public partial class HomeView : ReactiveUserControl<HomeViewModel>
     {
-        protected bool IsViewModelBound { get; private set; }
-
         public HomeView()
         {
             InitializeComponent();
 
             this.WhenActivated((d) =>
             {
-                if (IsViewModelBound)
-                {
-                    return;
-                }
                 HandleViewModelBound(d);
-                IsViewModelBound = true;
             });
         }
 

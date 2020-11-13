@@ -9,20 +9,13 @@ namespace MyApp.WPF
     /// </summary>
     public partial class ResultView : ReactiveUserControl<ResultViewModel>
     {
-        protected bool IsViewModelBound { get; private set; }
-
         public ResultView()
         {
             InitializeComponent();
 
             this.WhenActivated((d) =>
             {
-                if (IsViewModelBound)
-                {
-                    return;
-                }
                 HandleViewModelBound(d);
-                IsViewModelBound = true;
             });
         }
 
